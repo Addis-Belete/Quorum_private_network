@@ -17,33 +17,33 @@ services:
     <<: *tx-manager-def
     container_name: tessera_1
     volumes:
-      - ./Tessera-0/start.sh:/start.sh
-      - ./Tessera-0/config.json:/qdata/tm/config.json
-      - ./Tessera-0/tessera0.key:/qdata/tm/tm.key
-      - ./Tessera-0/tessera0.pub:/qdata/tm/tm.pub
+      - ./Tessera_0/start.sh:/start.sh
+      - ./Tessera_0/config.json:/qdata/tm/config.json
+      - ./Tessera_0/tessera0.key:/qdata/tm/tm.key
+      - ./Tessera_0/tessera0.pub:/qdata/tm/tm.pub
     expose:
       - "21010"
     ports:
       - "21010:21010"
     networks:
       quorum-network:
-        ipv4_address: 172.18.0.5
+        ipv4_address: 172.15.0.5
 
   tessera2:
     <<: *tx-manager-def
     container_name: tessera_2
     volumes:
-      - ./Tessera-1/start.sh:/start.sh
-      - ./Tessera-1/config.json:/qdata/tm/config.json
-      - ./Tessera-1/tessera1.key:/qdata/tm/tm.key
-      - ./Tessera-1/tessera1.pub:/qdata/tm/tm.pub
+      - ./Tessera_1/start.sh:/start.sh
+      - ./Tessera_1/config.json:/qdata/tm/config.json
+      - ./Tessera_1/tessera1.key:/qdata/tm/tm.key
+      - ./Tessera_1/tessera1.pub:/qdata/tm/tm.pub
     expose:
       - "21011"
     ports:
       - "21011:21011"
     networks:
       quorum-network:
-        ipv4_address: 172.18.0.6
+        ipv4_address: 172.15.0.6
 
   node0:
     <<: *quorum-def
