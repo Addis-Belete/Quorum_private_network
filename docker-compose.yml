@@ -21,7 +21,7 @@ services:
       - "22010:22010"
     networks:
       quorum-net:
-        ipv4_address: 172.13.0.10
+        ipv4_address: 172.15.0.10
 
   node1:
     <<: *quorum-def
@@ -38,7 +38,7 @@ services:
 
     networks:
       quorum-net:
-        ipv4_address: 172.13.0.11
+        ipv4_address: 172.15.0.11
   node2:
     <<: *quorum-def
     container_name: node0_3
@@ -54,7 +54,7 @@ services:
 
     networks:
       quorum-net:
-        ipv4_address: 172.13.0.12
+        ipv4_address: 172.15.0.12
 
 networks:
   quorum-net:
@@ -63,4 +63,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.13.0.0/16
+        - subnet: 172.15.0.0/16
