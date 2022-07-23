@@ -9,4 +9,4 @@ else
     echo "Quorum already initialized, skipping..."
 fi
 
-geth --http --http.port 22012 --datadir /qdata/dd --nodiscover --verbosity 6 --raft --raftjoinexisting 3 --raftport 50502 --rpc --rpcaddr 0.0.0.0 --rpcvhosts=* --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints --port 22007
+geth --http --http.port 22012 --datadir /qdata/dd --nodiscover --verbosity 6 --raft --raftjoinexisting 3 --raftport 50502 --rpc --rpcaddr 0.0.0.0 --rpcvhosts=* --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints --port 22007 --allow-insecure-unlock 
