@@ -25,7 +25,7 @@ services:
     ports:
       - "9001:9001"
     networks:
-      quorum-network:
+      quorum-net:
         ipv4_address: 172.15.0.5
 
   tessera2:
@@ -41,7 +41,7 @@ services:
     ports:
       - "9003:9003"
     networks:
-      quorum-network:
+      quorum-net:
         ipv4_address: 172.15.0.6
 
   node0:
