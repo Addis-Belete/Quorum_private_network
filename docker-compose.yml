@@ -4,7 +4,6 @@ x-quorum-def: &quorum-def
   image: quorumengineering/quorum:latest
   entrypoint: /start.sh
   environment:
-    - PRIVATE_CONFIG=ignore
     - QUORUM_CONSENSUS=raft
 
 x-tx-manager-def: &tx-manager-def
@@ -22,9 +21,9 @@ services:
       - ./Tessera_0/tessera0.key:/qdata/tm/tm.key
       - ./Tessera_0/tessera0.pub:/qdata/tm/tm.pub
     expose:
-      - "21010"
+      - "9001"
     ports:
-      - "21010:21010"
+      - "9001:9001"
     networks:
       quorum-network:
         ipv4_address: 172.15.0.5
@@ -38,9 +37,9 @@ services:
       - ./Tessera_1/tessera1.key:/qdata/tm/tm.key
       - ./Tessera_1/tessera1.pub:/qdata/tm/tm.pub
     expose:
-      - "21011"
+      - "9003"
     ports:
-      - "21011:21011"
+      - "9003:9003"
     networks:
       quorum-network:
         ipv4_address: 172.15.0.6
