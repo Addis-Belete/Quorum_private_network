@@ -18,8 +18,8 @@ services:
     volumes:
       - ./Tessera-0/start.sh:/start.sh
       - ./Tessera-0/config.json:/qdata/tm/config.json
-      - ./Tessera-0/tessera0.key:/qdata/tm/tm.key
-      - ./Tessera-0/tessera0.pub:/qdata/tm/tm.pub
+      - ./Tessera-0/tessera1.key:/qdata/tm/tm.key
+      - ./Tessera-0/tessera1.pub:/qdata/tm/tm.pub
     expose:
       - "21010"
     ports:
