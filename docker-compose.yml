@@ -1,0 +1,66 @@
+version: "3.7"
+x-quorum-def: &quorum-def
+  restart: "on-failure"
+  image: quorumengineering/quorum:latest
+  entrypoint: /start.sh
+  environment:
+    - PRIVATE_CONFIG=ignore
+    - QUORUM_CONSENSUS=raft
+
+services:
+  node0:
+    <<: *quorum-def
+    container_name: node0_1
+    volumes:
+      - ./node0/start.sh:/start.sh
+      - ./genesis.json:/qdata/dd/genesis.json
+      - ./node0/datadir/nodekey:/qdata/dd/nodekey
+      - ./node0/datadir/static-nodes.json:/qdata/dd/static-nodes.json
+    ports:
+      - "22005:22005"
+      - "22010:22010"
+    networks:
+      quorum-net:
+        ipv4_address: 172.13.0.5
+
+  node1:
+    <<: *quorum-def
+    container_name: node0_2
+    volumes:
+      - ./node1/start.sh:/start.sh
+      - ./genesis.json:/qdata/dd/genesis.json
+      - ./node1/datadir/nodekey:/qdata/dd/nodekey
+      - ./node1/datadir/static-nodes.json:/qdata/dd/static-nodes.json
+
+    ports:
+      - "22006:22006"
+      - "22011:22011"
+
+    networks:
+      quorum-net:
+        ipv4_address: 172.13.0.6
+  node2:
+    <<: *quorum-def
+    container_name: node0_3
+    volumes:
+      - ./node2/start.sh:/start.sh
+      - ./genesis.json:/qdata/dd/genesis.json
+      - ./node2/datadir/nodekey:/qdata/dd/nodekey
+      - ./node2/datadir/static-nodes.json:/qdata/dd/static-nodes.json
+
+    ports:
+      - "22007:22007"
+      - "22012:22012"
+
+    networks:
+      quorum-net:
+        ipv4_address: 172.13.0.7
+
+networks:
+  quorum-net:
+    name: quorum-net
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.13.0.0/16
