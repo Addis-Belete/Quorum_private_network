@@ -22,8 +22,11 @@ services:
       - ./Tessera-0/tessera1.pub:/qdata/tm/tm.pub
     expose:
       - "21010"
+      - "9001"
     ports:
       - "21010:21010"
+      - "9001:9001"
+
     networks:
       quorum-net:
         ipv4_address: 172.15.0.5
@@ -38,8 +41,12 @@ services:
       - ./Tessera-1/tessera1.pub:/qdata/tm/tm.pub
     expose:
       - "21011"
+      - "9003"
+
     ports:
       - "21011:21011"
+      - "9003:9003"
+
     networks:
       quorum-net:
         ipv4_address: 172.15.0.6
@@ -48,6 +55,7 @@ services:
     <<: *quorum-def
     container_name: node0_1
     volumes:
+      - ./node0/private-contract.js:/private-contract.js
       - ./node0/start.sh:/start.sh
       - ./genesis.json:/qdata/dd/genesis.json
       - ./node0/datadir/nodekey:/qdata/dd/nodekey
