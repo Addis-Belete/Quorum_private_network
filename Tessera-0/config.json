@@ -17,7 +17,7 @@
     {
       "app": "Q2T",
       "enabled": true,
-      "serverAddress": "unix:/qdata/tm/tm.ipc",
+      "serverAddress": "http://172.15.0.5:9005",
       "communicationType": "REST"
     },
     {
