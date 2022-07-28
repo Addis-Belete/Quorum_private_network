@@ -104,6 +104,14 @@ services:
       quorum-net:
         ipv4_address: 172.15.0.12
 
+  explorer:
+    image: consensys/quorum-explorer:latest
+    volumes:
+      - ./config.json:/app/config.json
+      - ./.env.production:/app/.env.production
+    ports:
+      - 25000:25000/tcp
+
 networks:
   quorum-net:
     name: quorum-net
