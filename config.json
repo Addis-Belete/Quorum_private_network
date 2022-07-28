@@ -1,0 +1,23 @@
+{
+	"algorithm": "raft",
+	"nodes": [
+		{
+			"name": "miner",
+			"client": "goquorum",
+			"rpcUrl": "http://172.15.0.10:22010",
+			"privateTxUrl": "http://172.15.0.5:9005"
+		},
+		{
+			"name": "validator1",
+			"client": "goquorum",
+			"rpcUrl": "http://172.15.0.11:22011",
+			"privateTxUrl": "http://172.15.0.6:9006"
+		},
+		{
+			"name": "validator2",
+			"client": "goquorum",
+			"rpcUrl": "http://172.15.0.12:22012",
+			"privateTxUrl": ""
+		}
+	]
+}

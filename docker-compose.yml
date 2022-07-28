@@ -4,6 +4,7 @@ x-quorum-def: &quorum-def
   image: quorumengineering/quorum:latest
   entrypoint: /start.sh
   environment:
+    - PRIVATE_CONFIG=ignore
     - QUORUM_CONSENSUS=raft
 
 x-tx-manager-def: &tx-manager-def
@@ -111,7 +112,9 @@ services:
       - ./.env.production:/app/.env.production
     ports:
       - 25000:25000/tcp
-
+    networks:
+      quorum-net:
+        ipv4_address: 172.15.0.13
 networks:
   quorum-net:
     name: quorum-net
