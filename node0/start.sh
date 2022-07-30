@@ -9,4 +9,4 @@ else
     echo "Quorum already initialized, skipping..."
 fi
 
- geth --http --http.port 22010 --datadir /qdata/dd --nodiscover --verbosity 6 --networkid 1337 --raft --raftport 50500 --rpc --rpcaddr 0.0.0.0 --rpcvhosts=* --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints --port 22005 --allow-insecure-unlock --ptm.url "http://172.15.0.5:9005" 
+ geth --metrics --pprof --pprof.addr 0.0.0.0 --pprof.port 9545 --http --http.port 22010 --datadir /qdata/dd --nodiscover --verbosity 6 --networkid 1337 --raft --raftport 50500 --rpc --rpcaddr 0.0.0.0 --rpcvhosts=* --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,raft --emitcheckpoints --port 22005 --allow-insecure-unlock  #--ptm.url "http://172.15.0.5:9005"  

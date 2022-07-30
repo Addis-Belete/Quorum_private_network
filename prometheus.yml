@@ -1,0 +1,17 @@
+
+  
+scrape_configs:
+  # Scrape Prometheus itself every 5 seconds.
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Scrape the Node Exporter every 5 seconds.
+  - job_name: 'node'
+    scrape_interval: 5s
+    metrics_path: /debug/metrics/prometheus
+    scheme: http
+    static_configs:
+      - targets: ['node0:9545']
+         
