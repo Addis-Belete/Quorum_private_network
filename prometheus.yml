@@ -14,4 +14,14 @@ scrape_configs:
     scheme: http
     static_configs:
       - targets: ['node0:9545']
+groups:
+  - name: example
+    rules:
+    - alert: HighRequestLatency
+      expr: job:request_latency_seconds:mean5m{job="node"} > 0.5
+      for: 10m
+      labels:
+        severity: page
+      annotations:
+        summary: High request latency
          
