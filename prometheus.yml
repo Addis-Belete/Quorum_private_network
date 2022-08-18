@@ -1,5 +1,6 @@
 
-  
+rule_files:
+  - alert.rules.yml 
 scrape_configs:
   # Scrape Prometheus itself every 5 seconds.
   - job_name: 'prometheus'
@@ -14,14 +15,12 @@ scrape_configs:
     scheme: http
     static_configs:
       - targets: ['node0:9545']
-groups:
-  - name: example
-    rules:
-    - alert: HighRequestLatency
-      expr: job:request_latency_seconds:mean5m{job="node"} > 0.5
-      for: 10m
-      labels:
-        severity: page
-      annotations:
-        summary: High request latency
+
+  - alert: Peer
+    expr: job:p2p_peers:mean5m{job="node"} < 4
+    for: 10m
+    labels:
+      severity: page
+    annotations:
+        summary: peers number less than expected
          
